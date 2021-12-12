@@ -27,6 +27,15 @@ mysql:
   additionaloptions: []
   #  - "allowPublicKeyRetrieval=true"
 
+  url-based-connection:
+    enabled: false
+    driverName: "com.mysql.cj.jdbc.Driver"
+
+    # If you're using this connection method, you'll be entering your hostname,
+    # port and database name below in the jdbcUrl string. The ones above will not
+    # be considered.
+    jdbcUrl: "jdbc:mysql://localhost:3306/playerservers"
+
   # Between version v1.2-RC6 and v1.2-RC7 there was a change in
   # Database handling. Everyone upgrading that were satisfied
   # on how it worked before should keep it as false, or first

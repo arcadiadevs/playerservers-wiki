@@ -14,7 +14,7 @@ PlayerServers is an advanced plugin that will allow your players to create their
 ## Features
 
 * **Async, lag-free:** Creation of servers happens 95% in async mode, which means that the creation of servers will be processed in a separate thread and 0 lag will be generated during that period.
-* ~~**Templates:** You'll be able to create the default template which will be used when creating the servers. (coming in 1.0.0 - STABLE)~~
+* **Templates:** You'll be able to create the default template which will be used when creating the servers.
 * **HubCore:** When purchasing this plugin, you'll get an additional HubCore plugin which will allow you to make a compass that will show online & offline player servers and give your players the ability to connect to them. Furthermore, it will give you some basic options for your lobby like disabling rain, hunger & damage. A special placeholder that will allow players to see current player-count on their sub server is also included.
 * **Automatically terminate inactive servers**: if servers are inactive (or don't have any players) for a configurable amount of time, they will automatically shutdown.
 * **Fast & Efficient:** The creation of the server happens in less than 2 seconds which will allow your players to be teleported to their sub server in less than 15 seconds (other time will be used for boot-up of spigot server, and generating the main world - also, the huge factor is your server CPU)
