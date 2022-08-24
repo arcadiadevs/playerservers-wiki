@@ -10,8 +10,8 @@ description: >-
 [..](../)
 {% endcontent-ref %}
 
-{% content-ref url="../for-owners/permissions-and-commands.md" %}
-[permissions-and-commands.md](../for-owners/permissions-and-commands.md)
+{% content-ref url="permissions-and-commands.md" %}
+[permissions-and-commands.md](permissions-and-commands.md)
 {% endcontent-ref %}
 
 {% content-ref url="installation.md" %}
