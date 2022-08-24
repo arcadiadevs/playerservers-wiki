@@ -4,7 +4,7 @@ description: >-
   care about security and network isolation of their subservers.
 ---
 
-# 🛳 Docker support
+# 🛳 Docker configuration
 
 ## Introduction
 

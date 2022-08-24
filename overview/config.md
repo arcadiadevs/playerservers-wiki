@@ -109,6 +109,17 @@ ram-limiting:
   # How much RAM (in MB) should we allocate to each PlayerServer?
   ram-per-server: 512
 
+cpu-limiting:
+  # Only for docker-based servers,
+  # should we use permissions for cpu management? If set to true, you MUST give
+  # your players permission playerserver.cpu.<amount> (ex: playerserver.cpu.1)
+  # or, else, the command will be blocked, and player will not be able to create
+  # the server. If set to false, everyone will have cpu-per-server amount of CPU.
+  use-permissions: false
+
+  # How much CPU (in %) should we allocate to each PlayerServer?
+  cpu-per-server: 50
+
 player-limiting:
   # Should we use permissions for max-players management? If set to true, your
   # players should have playerserver.players.<amount>. The max amount of players
@@ -167,38 +178,65 @@ disabled-access:
 multi-node: false
 experimental-rename: false
 
-# PlayerServers 2.0 experimental web-panel feature (concept only, for now).
-# Enable it only for testing purposes. It can and will cause security vulnerabilities.
-#
-# Read instructions here https://www.spigotmc.org/resources/82268/update?update=394183
-experimental-panel: false
+pterodactyl:
+  enabled: false
+  url: "http://localhost:8080"
+  token: "token"
+
+  nest-id: 0
+  egg-id: 0
+  location-id: 0
+
+  environment_map:
+    SERVER_JARFILE: "server.jar"
+    VERSION: "1.8.8"
+
+docker:
+  enabled: false
 ```
 
 ## Current messages.toml
 
-```
+```toml
+playerservers-default-cmd = "&9PlayerServers> &7An advanced Server Management plugin which allows players to create and manage their own subserver."
+license-msg = "&9Licence> &7%license%"
 run-in-game = "&9Error> &7Oops! You can only run this command in-game."
+no-server = "&9Error> &7You don't own a server. Don't worry, you can create one by executing &a/ps create"
 not-enough-arguments = "&9PlayerServers> &7Oops, not enough arguments: /playerservers admin test <node-name>"
 not-enough-arguments-kill = "&9PlayerServers> &7Oops, not enough arguments: /playerserver kill stop <uuid (example: 1F4a2id)>"
 not-enough-arguments-delete = "&9PlayerServers> &7Not enough arguments. &a/playerservers admin delete <uuid>. Please keep in mind that you should not enter the full id. You should just enter the first part (example: if full UUID is 1234-5678-1223-5623, you should just enter 1234)."
 no-permission = "&9Error> &7Oops, it seems like you don't have permission to do that."
 launching-server = "&c&lLaunching your server. This might take some time. You will be teleported as soon as it's ready."
 server-online = "&9PlayerServers> &7Oops, it seems like your server is not online."
-successfully-renamed = "&9PlayerServers> &7Successfully renamed server."
-rename-failed = "&9PlayerServers> &7Oops, the server with that name already exists."
 already-have = "&9Error> &7Oops, it seems like you already have a server!"
 too-many-online = "&9Error> &7Oops, it seems like too many servers are running at the moment."
+template-no-permission = "&9Error> &7Oops, you don't have permission to use that template!"
 
 [server-creation]
 
-process-first = "&9PlayerServer> &7Starting the creation of your server..."
-process-second = "&9Process> &7Successfully copied Spigot.jar & created eula.txt"
-process-third = "&9Process> &7Successfully copied the PlayerServerCore to your server."
-process-fourth = "&9Process> &7Successfully created server.properties & start.sh"
-
-post-process-one = "&9PostProcess> &7Your server has been added to the BungeeCord. Teleporting in &a%time% &7seconds..."
-
+starting-creation = "&9PlayerServer> &7Starting the creation of your server..."
+copied-files = "&9Process> &7Successfully copied required files and built the server container."
+teleporting-soon = "&9PostProcess> &7Your server has been created. Teleporting in &a%time% &7seconds..."
 sending-to-remote-server = "&9Process> &7We're beginning the creation of your server on the first remote node that provides us with ample resources. This will not take a while."
+
+# Pterodactyl
+account-created-successfully = "&9Success> &7Your account has been created successfully."
+account-creation-failed = "&9Error> &7Account creation failed. Please try again later. Error: %error%"
+
+server-created-successfully = "&9Success> &7Your server has been created successfully on Pterodactyl panel."
+server-creation-failed = "&9Error> &7Server creation failed. Please try again later. Error: %error%"
+
+[server-reboot]
+
+message = "&9PlayerServers> &7In order to restart your server, you need to shut it down first by running &a/stop&7 from your server. You can also forcefully kill it by running &c/playerserver stop.&7 After stopping your server, execute command &a/playerserver start&7 in order to boot it up again."
+warning = "&9WARNING> &7You can also &aFORCE REBOOT&7 the server by executing this command again in &c5 seconds&7, but world may end up being &6unsaved&7, and &ccorruption&7 may appear."
+
+[server-rename]
+
+successfully-renamed = "&9PlayerServers> &7Successfully renamed server."
+too-long = "&9Error> &7Oops, the servername must be 15 characters long at most."
+invalid-characeters = "&9Error> &7Oops, the servername can only contain A-Z, a-z, 1-9."
+rename-failed = "&9PlayerServers> &7Oops, the server with that name already exists."
 
 [server-stop]
 
@@ -216,4 +254,10 @@ connected = "&9PlayerServer> &7You've been successfully sent to your server. You
 [server-restart]
 
 killing = "&9PlayerServers> &7Trying to kill your server..."
+
+[server-remove]
+
+remove-warning = "&c&lAre you sure you want to delete your server? If you do, please repeat this command in the next 5 seconds."
+removing = "&9PlayerServers> &7Deleting your server..."
+successfully-removed = "&c&lYour server has been successfully deleted. Removing you from the database now..."
 ```
