@@ -28,14 +28,14 @@ ram-limiting:
 
 In case you'd like to see the default config after this update, please click the link below:
 
-{% content-ref url="../config.md" %}
-[config.md](../config.md)
+{% content-ref url="../for-owners/config.md" %}
+[config.md](../for-owners/config.md)
 {% endcontent-ref %}
 
 In case you'd like to learn more about permission-based RAM system, follow this link:
 
-{% content-ref url="../limitations/permission-based-ram.md" %}
-[permission-based-ram.md](../limitations/permission-based-ram.md)
+{% content-ref url="../for-owners/limitations/permission-based-ram.md" %}
+[permission-based-ram.md](../for-owners/limitations/permission-based-ram.md)
 {% endcontent-ref %}
 
 

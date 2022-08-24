@@ -23,7 +23,3 @@ PlayerServers is an advanced plugin that will allow your players to create their
 
 ## Purchase it now
 
-{% content-ref url="legacy/additional-tutorials-faq.md" %}
-[additional-tutorials-faq.md](legacy/additional-tutorials-faq.md)
-{% endcontent-ref %}
-
