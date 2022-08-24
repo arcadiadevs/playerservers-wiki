@@ -2,6 +2,7 @@
 description: >-
   Below you can find some of the basic instructions on how to create your
   sub-server, how to shut it down, how to boot it back up, and how to access it.
+coverY: -94.39106145251388
 ---
 
 # Basic instructions

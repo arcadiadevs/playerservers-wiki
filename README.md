@@ -23,3 +23,10 @@ PlayerServers is an advanced plugin that will allow your players to create their
 
 ## Purchase it now
 
+{% embed url="https://builtbybit.com/resources/15521/" %}
+Purchase on BuiltByBit (MC-Market)
+{% endembed %}
+
+{% embed url="https://www.spigotmc.org/resources/82268/" %}
+Purchase on SpigotMC
+{% endembed %}
