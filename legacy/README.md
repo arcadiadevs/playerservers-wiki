@@ -4,7 +4,7 @@ description: >-
   PlayerServers (older than v3)
 ---
 
-# Legacy
+# 👵 Legacy
 
 {% content-ref url="../" %}
 [..](../)
