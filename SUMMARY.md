@@ -3,7 +3,6 @@
 ## 📘 Overview
 
 * [🖥 PlayerServers - Overview](README.md)
-* [🚀 Plugin Installation Tutorial](overview/installation.md)
 
 ***
 
@@ -17,6 +16,7 @@
   * [Basic instructions](for-players/basic-instructions.md)
   * [Plugin management](for-players/plugin-management.md)
   * [Editing config files](for-players/editing-config-files.md)
+  * [Plugin Installation Tutorial](for-owners/installation.md)
   * [Current Config & Messages File](for-owners/config.md)
   * [Permissions & Commands](for-owners/permissions-and-commands.md)
   * [Limitations](for-owners/limitations/README.md)
