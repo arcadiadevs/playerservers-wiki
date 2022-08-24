@@ -3,6 +3,13 @@
 ## 📘 Overview
 
 * [🖥 PlayerServers - Overview](README.md)
+* [🚀 Plugin Installation Tutorial](overview/installation.md)
+* [📜 Current Config files](overview/config.md)
+* [🚫 Limitations](overview/limitations/README.md)
+  * [Permission-based RAM](overview/limitations/permission-based-ram.md)
+  * [Max players limitation](overview/limitations/max-players-limitation.md)
+  * [Max plugins limitation](overview/limitations/max-plugins-limitation.md)
+  * [CPU](overview/limitations/cpu.md)
 
 ***
 
@@ -15,8 +22,8 @@
     * [3.7-D to 4.0](updates/update1.md)
   * [Basic instructions](for-players/basic-instructions.md)
   * [Plugin management](for-players/plugin-management.md)
+  * [Plugin Installation Tutorial](legacy/installation.md)
   * [Editing config files](for-players/editing-config-files.md)
-  * [Plugin Installation Tutorial](for-owners/installation.md)
   * [Current Config & Messages File](for-owners/config.md)
   * [Permissions & Commands](for-owners/permissions-and-commands.md)
   * [Limitations](for-owners/limitations/README.md)

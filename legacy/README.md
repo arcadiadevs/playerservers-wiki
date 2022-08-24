@@ -14,6 +14,6 @@ description: >-
 [permissions-and-commands.md](../for-owners/permissions-and-commands.md)
 {% endcontent-ref %}
 
-{% content-ref url="../for-owners/installation.md" %}
-[installation.md](../for-owners/installation.md)
+{% content-ref url="installation.md" %}
+[installation.md](installation.md)
 {% endcontent-ref %}
