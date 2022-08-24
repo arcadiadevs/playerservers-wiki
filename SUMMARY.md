@@ -7,9 +7,9 @@
 * [📜 Current Config files](overview/config.md)
 * [🚫 Limitations](overview/limitations/README.md)
   * [Permission-based RAM](overview/limitations/permission-based-ram.md)
+  * [Permission-based CPU](overview/limitations/permission-based-ram-1.md)
   * [Max players limitation](overview/limitations/max-players-limitation.md)
   * [Max plugins limitation](overview/limitations/max-plugins-limitation.md)
-  * [CPU](overview/limitations/cpu.md)
 
 ***
 
