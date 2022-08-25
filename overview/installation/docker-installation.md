@@ -20,7 +20,7 @@ For a quick install of Docker CE, you can execute the command below:
 curl -sSL https://get.docker.com/ | CHANNEL=stable bash
 ```
 
-### Setup
+### Configuration
 
 After successfully installing docker, you can enable docker support inside your config.yml.
 

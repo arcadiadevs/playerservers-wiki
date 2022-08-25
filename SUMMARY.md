@@ -6,6 +6,7 @@
 * [🚀 Plugin Installation Tutorial](overview/installation/README.md)
   * [🎁 Templates](overview/installation/templates.md)
   * [📦 Adding pre-defined plugins](overview/installation/adding-pre-defined-plugins.md)
+  * [⌨ Multi-Node Support](overview/installation/multi-node-support.md)
 * [🛳 Docker configuration](overview/installation/docker-installation.md)
 * [🌐 Pterodactyl configuration](overview/installation/pterodactyl-configuration.md)
 * [📜 Current Config files](overview/config.md)
