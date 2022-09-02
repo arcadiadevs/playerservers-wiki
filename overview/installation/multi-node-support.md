@@ -7,6 +7,10 @@ description: >-
 
 # ⌨ Multi-Node Support
 
+{% hint style="info" %}
+The below page explains how to use this feature on PlayerServers 3. This is only relevant if you're a beta tester. To view this page for PlayerServers 3, click [here](../../legacy/multi-node-support.md).
+{% endhint %}
+
 ## Requirements
 
 * Purchased PlayerServers. This addon is free of charge
@@ -20,8 +24,12 @@ The installation process for PlayerServers Daemon is pretty straight forward. Th
 
 After that's done, create a folder Daemon. Download the following jar file and drop it into your Daemon folder:
 
+{% file src="../../.gitbook/assets/PlayerServersDaemon.jar" %}
+Daemon v3 (for PlayerServers v3 Beta)
+{% endfile %}
+
 {% file src="../../.gitbook/assets/Daemon-v1.1 (1).zip" %}
-Daemon v1.1 - Release
+Daemon v1.1 - Release (for PlayerServers v2)
 {% endfile %}
 
 After that's done, run it for the first time by using `java -Xmx200M -jar Daemon.jar` in order to let it generate the required files. Now exit it by typing in `exit`. After that's done, configure both multinode.yml inside your `BungeeCord/plugins/PlayerServers/multinode.yml` and your Daemon config.toml which will be generated in your Daemon root directory. It is important to include the same token inside both configs!

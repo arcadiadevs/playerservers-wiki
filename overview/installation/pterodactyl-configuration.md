@@ -7,4 +7,8 @@ description: >-
 
 # 🌐 Pterodactyl configuration
 
-## Work in progress
+{% hint style="info" %}
+The below page explains how to use this feature on PlayerServers 3. This is only relevant if you're a beta tester. This feature does not exist on the public release yet.
+{% endhint %}
+
+## This page is work in progress.

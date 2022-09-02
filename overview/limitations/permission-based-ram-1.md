@@ -4,6 +4,10 @@ description: Learn how to make a permission-based CPU system for your players
 
 # Permission-based CPU
 
+{% hint style="info" %}
+The below page explains how to use this feature on PlayerServers 3. This is only relevant if you're a beta tester. This feature is not available in the public release yet.
+{% endhint %}
+
 ## Introduction
 
 We know that making a permission-based CPU system is a crucial to our customers and could be greately used for safety of your infrastructure and preventing overload as well as for stores in order to motivate players to upgrade to a higher rank, so we've implemented a permission-based CPU system. In this tutorial, you'll learn how to configure it for your needs.
