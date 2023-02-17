@@ -1,13 +1,13 @@
 # 📜 Current Config files
 
 {% hint style="info" %}
-The below page explains how to use this feature on PlayerServers 3. This is only relevant if you're a beta tester. To view this page for PlayerServers 3, click [here.](../legacy/config.md)
+The below page explains how to use this feature on PlayerServers 3. This is only relevant if you're a beta tester. To view this page for PlayerServers 3, click [here.](../legacy-v2.x/config.md)
 {% endhint %}
 
 Below you can see the contents of the newest BungeeCord PlayerServers configuration file.
 
 {% hint style="info" %}
-Please note that in some extremely rare cases I may **forget to update the config** on this page.
+Please note that in some extremely rare cases I may **forget to update the config** on this page. For the most up to date config.yml and messages.yml, click [here](https://github.com/arcadiadevs/playerservers-everything).
 {% endhint %}
 
 ```yaml
@@ -22,43 +22,19 @@ Please note that in some extremely rare cases I may **forget to update the confi
 
 # Please enter your MySQL information below.
 mysql:
-  hostname: 127.0.0.1
-  username: web
-  password: webmaster
-  database: playerservers
-  useSSL: true
+  # Url of the MySQL server, in format: jdbc:mysql://<host>:<port>/<database>
+  # Any additional options can be added at the end of url, such as:
+  # ?autoReconnect=true&useSSL=false?useUnicode=true&characterEncoding=UTF-8
+  url: "jdbc:mysql://localhost:3306/playerservers?useSSL=false&serverTimezone=UTC"
 
-  additionaloptions: []
-  #  - "allowPublicKeyRetrieval=true"
+  username: root
+  password: root
 
-  url-based-connection:
-    enabled: false
-    driverName: "com.mysql.cj.jdbc.Driver"
-
-    # If you're using this connection method, you'll be entering your hostname,
-    # port and database name below in the jdbcUrl string. The ones above will not
-    # be considered.
-    jdbcUrl: "jdbc:mysql://localhost:3306/playerservers"
-
-  # Between version v1.2-RC6 and v1.2-RC7 there was a change in
-  # Database handling. Everyone upgrading that were satisfied
-  # on how it worked before should keep it as false, or first
-  # try enabling it and seeing if their servers are still
-  # attached to their account or not. In some rare cases it
-  # can happen that changing the value of this option can
-  # detach servers from your account, so enabling it if it
-  # worked correctly for you before is not needed.
-  use-modern-database: true
-
-# This setting defines port range
-ports:
-  # Server port range
-  start-port: 30000
-  end-port: 40000
-
-  # Panel port range only if experimental-panel is enabled
-  panel-start-port: 40000
-  panel-end-port: 50000
+  # Developer options, do not change unless you know what you are doing.
+  driver: "com.mysql.cj.jdbc.Driver"
+  update-policy: "update"
+  debug: false
+  get-from-file: false
 
 # Where should players be moved after they /stop or /ps kill their server?
 balancer:
@@ -75,6 +51,19 @@ server-name-format:
 
   # Which format should we use?
   # %id% equals to player name or uuid depending on use-usernames option
+  # %uuid% is a random UUID (independent of use-usernames option)
+  # %uuidshort% is a random UUID without dashes (independent of use-usernames option)
+  # %player% is the player name (independent of use-usernames option)
+  # %playeruuid% is the player UUID
+  # %playeruuidshort% is the player UUID without dashes
+  # %timestamp% is a timestamp in milliseconds
+  # %timestampshort% is a timestamp in seconds
+  # %day% is a day of the month
+  # %month% is a month of the year
+  # %year% is a year
+  #
+  # To find out what a UUID looks like, you can use this website:
+  # https://www.uuidgenerator.net
   format: "PS_%id%"
 
 # What is the max amount of servers that can be running at once?
@@ -89,20 +78,6 @@ minutes-to-shutdown: 15
 # should we launch the server? Increase this if you get could not connect message.
 copy-delay: 3
 
-# Default startup command. Supports %uuid% for server UUID and %mem% for memory.
-launch-command: "screen -dmS %uuid% java -Xmx%mem%M -jar Spigot.jar"
-
-# In how much seconds, after first boot-up of the server should we
-# teleport the player to their sub-server? This depends on the strength
-# of your machine CPU. If you have a stronger machine, you might wanna set
-# it to something like 12 seconds, if you have some kind of Xeon with less
-# than 3.9Ghz, you might wanna set this to 15-20 seconds.
-teleport-time: 15
-
-# In how many seconds should we attempt to connect player to their
-# sub-server after it being launched by /playerserver start command?
-teleport-time-normal: 10
-
 ram-limiting:
   # Should we use permissions for ram management? If set to true, you MUST give
   # your players permission playerserver.ram.<amount> (ex: playerserver.ram.512)
@@ -114,8 +89,7 @@ ram-limiting:
   ram-per-server: 512
 
 cpu-limiting:
-  # Only for docker-based servers,
-  # should we use permissions for cpu management? If set to true, you MUST give
+  # Should we use permissions for cpu management? If set to true, you MUST give
   # your players permission playerserver.cpu.<amount> (ex: playerserver.cpu.1)
   # or, else, the command will be blocked, and player will not be able to create
   # the server. If set to false, everyone will have cpu-per-server amount of CPU.
@@ -161,107 +135,140 @@ smart-command: false
 # Obviously, admin commands require permission no matter what.
 enable-permissions: true
 
+# Should we disable OOM killer? If set to true, the server will not be
+# killed if it runs out of memory, but will instead slowly crash.
+# Enable this if your server is crashing due to OOM killer.
+disable-oom-killer: false
+
+# Templates will not work on Pterodactyl.
 templates:
   default:
     # This is just an example of what you can do with requires-permission.
     # Default template will never require permission, even if set to true.
     requires-permission: false
-    # What launch command should be used? If set as %default%, launch-command
-    # from above will be used (~line 70). Supports %mem% and %uuid% placeholders.
-    launch-command: "%default%"
-    # What plugins does this template contain?
-    # More info: https://playerservers.thearcadia.xyz/experimental/templates
-    plugins: []
+
+    # The plugin is built around itzg/minecraft-server as a base image.
+    # You can use any image you want, but we do not provide support for it.
+    # Use variables below to customize the way your server will be created.
+    docker-image: "itzg/minecraft-server"
+
+    # The type of the server jar. Can be "SPIGOT", "PAPER", "PUFFERFISH",
+    # "PURPUR", "MAGMA", "FORGE", "FABRIC" and much more.
+    #
+    # For a full list of supported server jars, check out this link:
+    # https://github.com/itzg/docker-minecraft-server/blob/master/README.md#server-types
+    type: "PAPER"
+
+    # The version of the template. Paper jar will be downloaded automatically
+    # Please avoid using non-standard versions such as 1.7.5 or 1.10 or 1.17.1
+    # If you use LATEST, server will always automatically update to the latest
+    # version of Minecraft available, as soon as server is restarted.
+    # If you use SNAPSHOT, server will always automatically update to the latest
+    # snapshot version of Minecraft available, as soon as server is restarted.
+    # SNAPSHOT may not work on all types of servers.
+    version: "1.8.8"
+
+    # These variables are always sent if you use the default docker image
+    # (itzg/minecraft-server) and can not be changed.
+    #
+    # EULA=true
+    # TYPE=%typeFromAbove%
+    # VERSION=%versionFromAbove%
+    # ONLINE_MODE=false
+    # SERVER_PORT=%serverPort%
+    #
+    # Below you can add more variables for this image or in case you use a custom one.
+    # Format: VARIABLE_NAME: "VARIABLE_VALUE"
+    variables:
+      USE_NATIVE_TRANSPORT: "false" # Required for older versions of Minecraft
 
 # Which folders or files will not show in /config file manager?
 disabled-access:
   - "ExampleFolder"
   - "Plugin.jar"
 
-# BETA FEATURES. USE AT OWN RISK!!
-multi-node: false
-experimental-rename: false
-
 pterodactyl:
+  # Should we enable Pterodactyl deployment? If set to true, you don't need
+  # to configure PlayerServers Daemon. All deployments will be done by Pterodactyl.
   enabled: false
-  url: "http://localhost:8080"
-  token: "token"
 
+  # Url of your panel. Example: https://panel.example.com
+  # Make sure not to have / at the end!!
+  url: "http://localhost:8080"
+
+  # Application token can be created under "Admin" -> "Application API."
+  # Make sure to give it read/write access:
+  # - Servers
+  # - Allocations
+  # - Users
+  # For everything else except "server databases", give it read-only access.
+  application-token: "token"
+
+  # Client token can be generated under "Account" -> "API Credentials."
+  # Url: https://panel.example.com/account/api
+  # This token must be generated by an admin account.
+  client-token: "token"
+
+  # Important variables to configure. Make sure to enter valid nest and egg id from
+  # which the servers will be deploy.
+  # Location id is the ID of location used for load-balanced deployments.
+  # Nodes under the selected location will be slowly filled up with servers.
   nest-id: 0
   egg-id: 0
   location-id: 0
 
+  # Should we print the docker container installation output to the user?
+  # Could be useful for debugging, and nonetheless, it can be cool for the player :)
+  install-output: true
+
   environment_map:
     SERVER_JARFILE: "server.jar"
-    VERSION: "1.8.8"
-
-docker:
-  enabled: false
+    MINECRAFT_VERSION: "1.8.8"
 ```
 
 ## Current messages.toml
 
 ```toml
-playerservers-default-cmd = "&9PlayerServers> &7An advanced Server Management plugin which allows players to create and manage their own subserver."
-license-msg = "&9Licence> &7%license%"
-run-in-game = "&9Error> &7Oops! You can only run this command in-game."
-no-server = "&9Error> &7You don't own a server. Don't worry, you can create one by executing &a/ps create"
-not-enough-arguments = "&9PlayerServers> &7Oops, not enough arguments: /playerservers admin test <node-name>"
-not-enough-arguments-kill = "&9PlayerServers> &7Oops, not enough arguments: /playerserver kill stop <uuid (example: 1F4a2id)>"
-not-enough-arguments-delete = "&9PlayerServers> &7Not enough arguments. &a/playerservers admin delete <uuid>. Please keep in mind that you should not enter the full id. You should just enter the first part (example: if full UUID is 1234-5678-1223-5623, you should just enter 1234)."
-no-permission = "&9Error> &7Oops, it seems like you don't have permission to do that."
-launching-server = "&c&lLaunching your server. This might take some time. You will be teleported as soon as it's ready."
-server-online = "&9PlayerServers> &7Oops, it seems like your server is not online."
-already-have = "&9Error> &7Oops, it seems like you already have a server!"
-too-many-online = "&9Error> &7Oops, it seems like too many servers are running at the moment."
-template-no-permission = "&9Error> &7Oops, you don't have permission to use that template!"
-
-[server-creation]
-
-starting-creation = "&9PlayerServer> &7Starting the creation of your server..."
-copied-files = "&9Process> &7Successfully copied required files and built the server container."
-teleporting-soon = "&9PostProcess> &7Your server has been created. Teleporting in &a%time% &7seconds..."
-sending-to-remote-server = "&9Process> &7We're beginning the creation of your server on the first remote node that provides us with ample resources. This will not take a while."
-
-# Pterodactyl
-account-created-successfully = "&9Success> &7Your account has been created successfully."
-account-creation-failed = "&9Error> &7Account creation failed. Please try again later. Error: %error%"
-
-server-created-successfully = "&9Success> &7Your server has been created successfully on Pterodactyl panel."
-server-creation-failed = "&9Error> &7Server creation failed. Please try again later. Error: %error%"
-
-[server-reboot]
-
-message = "&9PlayerServers> &7In order to restart your server, you need to shut it down first by running &a/stop&7 from your server. You can also forcefully kill it by running &c/playerserver stop.&7 After stopping your server, execute command &a/playerserver start&7 in order to boot it up again."
-warning = "&9WARNING> &7You can also &aFORCE REBOOT&7 the server by executing this command again in &c5 seconds&7, but world may end up being &6unsaved&7, and &ccorruption&7 may appear."
-
-[server-rename]
-
-successfully-renamed = "&9PlayerServers> &7Successfully renamed server."
-too-long = "&9Error> &7Oops, the servername must be 15 characters long at most."
-invalid-characeters = "&9Error> &7Oops, the servername can only contain A-Z, a-z, 1-9."
-rename-failed = "&9PlayerServers> &7Oops, the server with that name already exists."
-
-[server-stop]
-
-not-online = "&9PlayerServers> &7Oops, it seems like your server is not online."
-successfully-killed = "&9Success> &7Your server has been successfully killed."
-
-[server-start]
-
-prepairing = "&9PlayerServers> &7Preparing to launch your server."
-
-[server-connect]
-
-connected = "&9PlayerServer> &7You've been successfully sent to your server. Your friends can use &a/server %uuid%&7 to connect."
-
-[server-restart]
-
-killing = "&9PlayerServers> &7Trying to kill your server..."
-
-[server-remove]
-
-remove-warning = "&c&lAre you sure you want to delete your server? If you do, please repeat this command in the next 5 seconds."
-removing = "&9PlayerServers> &7Deleting your server..."
-successfully-removed = "&c&lYour server has been successfully deleted. Removing you from the database now..."
+playerservers-default-cmd="&9PlayerServers> &7An advanced Server Management plugin which allows players to create and manage their own subserver."
+license-msg="&9Licence> &7%license%"
+no-server="&9Error> &7You don't own a server. Don't worry, you can create one by executing &a/ps create"
+not-enough-arguments="&9Error> &7Not enough arguments. Please use &a/ps help &7for more information."
+not-enough-arguments-kill="&9PlayerServers> &7Oops, not enough arguments: /playerserver kill stop <uuid (example: 1F4a2id)>"
+not-enough-arguments-delete="&9PlayerServers> &7Not enough arguments. &a/playerservers admin delete <uuid>. Please keep in mind that you should not enter the full id. You should just enter the first part (example: if full UUID is 1234-5678-1223-5623, you should just enter 1234)."
+no-permission="&9Error> &7Oops, it seems like you don't have permission to do that."
+launching-server="&9PlayerServers> &7Your server is starting up. Please wait..."
+server-online="&9PlayerServers> &7Your server is now online. You will be connected shortly. Your friends can use &a/server %uuid%&7 to connect."
+server-offline="&9PlayerServers> &7Your server is offline. You can start it by executing &a/ps start&7."
+already-have="&9PlayerServers> &7You already have a server!"
+too-many-online="&9PlayerServers> &7You have too many servers online. Please wait until one of your servers is offline."
+template-no-permission="&9PlayerServers> &7You don't have permission to use this template."
+starting-creation="&9PlayerServers> &7Your server is being created. Please wait..."
+teleporting-soon="&9PlayerServers> &7You will be teleported to your server in a few seconds."
+sending-to-remote-server="&9PlayerServers> &7Sending you to your server..."
+message="&9PlayerServers> &7%message%"
+warning="&c&lAre you sure you want to do that? If you do, please repeat this command in the next 5 seconds."
+successfully-renamed="&9PlayerServers> &7Your server has been successfully renamed."
+too-long="&9Error> &7Your server name is too long. Please choose a shorter name."
+invalid-characters="&9Error> &7Your server name contains invalid characters. Please choose a valid name."
+rename-failed="&9Error> &7Renaming your server failed. Please try again later."
+not-online="&9Error> &7Your server is not online."
+successfully-killed="&9PlayerServers> &7Your server has been successfully killed."
+connected="&9PlayerServers> &7You are being connected to your server..."
+killing="&9PlayerServers> &7Killing your server..."
+successfully-removed="&9PlayerServers> &7Your server has been successfully removed."
+removing="&9PlayerServers> &7Deleting your server..."
+remove-warning="&9PlayerServers> &7Are you sure you want to remove your server? If you do, please repeat this command in the next 5 seconds."
+account-created-successfully="&9PlayerServers> &7Your account has been created successfully."
+account-creation-failed="&9Error> &7Account creation failed. Please try again later.  Error: %error%"
+server-created-successfully="&9PlayerServers> &7Your server has been created successfully on Pterodactyl panel. Please login at &6%link% &7 with username &6%username% &7 and password &6%password% &7 to manage your server."
+server-creation-failed="&9Error> &7Server creation failed. Please try again later. Error: %error%"
+no-port-available="&9Error> &7Oops, it seems like there are no ports available. Please try again later."
+no-node-available="&9Error> &7Oops, it seems like there are no nodes available. Please try again later."
+action-error="&9Error> &7Oops, it seems like there was an error while performing this action. Please try again later. Error: %error%"
+node-created-successfully="&9PlayerServers> &7Node has been created successfully."
+server-not-found="&9Error> &7Oops, we couldn't find that server."
+not-enough-arguments-start="&9Error> &7You didn't provide enough arguments. Please use &a/ps admin start <uuid>&7."
+sending-info-to-remote-server="&9PlayerServers> &7Sending information to the remote node..."
+node-not-found="&9Error> &7Oops, we couldn't find that node."
+node-removed-successfully="&9PlayerServers> &7Node has been removed successfully."
 ```
