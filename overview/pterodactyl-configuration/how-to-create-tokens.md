@@ -2,7 +2,7 @@
 description: Learn how to create Pterodactyl client and application API token.
 ---
 
-# How to create tokens
+# 🔓 How to create tokens
 
 ## Introduction
 

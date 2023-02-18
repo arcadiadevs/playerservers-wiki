@@ -4,7 +4,7 @@ description: >-
   your subservers.
 ---
 
-# Download custom wings
+# 🕊 Download custom wings
 
 In order to make sure your players can't remove ServerCore from their servers and thus removing the only thing that will stop their server from being online 24/7, this modification is highly recommended.
 

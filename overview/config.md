@@ -1,7 +1,7 @@
 # 📜 Current Config files
 
 {% hint style="info" %}
-The below page explains how to use this feature on PlayerServers 3. This is only relevant if you're a beta tester. To view this page for PlayerServers 3, click [here.](../legacy-v2.x/config.md)
+The below page explains how to use this feature on PlayerServers 3. This is only relevant if you're a beta tester. To view this page for PlayerServers 3, click [here.](../legacy/config.md)
 {% endhint %}
 
 Below you can see the contents of the newest BungeeCord PlayerServers configuration file.
