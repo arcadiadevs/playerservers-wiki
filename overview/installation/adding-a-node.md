@@ -14,7 +14,7 @@ In order to create subservers, you need to have nodes configured. Each node can 
 
 In order to create a node, you'll need to download the latest Daemon.
 
-{% file src="../../.gitbook/assets/PlayerServersDaemon v3.1-beta5.zip" %}
+{% file src="../../.gitbook/assets/PlayerServersDaemon-v3.1-beta5.zip" %}
 Download the latest daemon
 {% endfile %}
 
@@ -48,3 +48,7 @@ The last step would be to add the node to PlayerServers. To do so, type the foll
 * MinPort and MaxPort represent the port range in which your servers are going to be created on. For example, if you put 30000 and 30100 as min and max port respectively, your servers will get a random port between those two numbers when created on this node.
 * MaxOnline is the max number of online instances at once on this node.
 * Token is the token configured in Daemon's config.toml
+
+{% hint style="success" %}
+If everything was done correctly, your node is ready to start accepting new subservers. However, make sure to have at least one template configured for it (default). Learn more below on how to do so.
+{% endhint %}

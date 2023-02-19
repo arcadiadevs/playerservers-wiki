@@ -9,7 +9,11 @@ description: Learn how to setup templates with plugins, mods, worlds and configu
 In PlayerServers, Templates are an essential way of managing the creation of your servers.
 
 {% hint style="info" %}
-_At minimum you are required to have a `default` Template folder with Spigot.jar file inside. Without that, it will not be possible to create a subserver._
+At minimum you are required to have a `default` Template folder with Spigot.jar file inside. Without that, it will not be possible to create a subserver.
+{% endhint %}
+
+{% hint style="warning" %}
+Please keep in mind that all these steps **must be repeated across every Daemon instance equally**! Also, keep in mind that Templates do not work yet under [Pterodactyl mode](pterodactyl-configuration.md).
 {% endhint %}
 
 ## Instructions

@@ -61,6 +61,6 @@ After the configuration of MySQL database, boot up your BungeeCord server. The p
 If you followed the guide correctly, you will have a working version of PlayerServers installed. If there are any additional errors, or you need help with something, please don't hesitate to send me PM od MC-Market, or on Discord - `OpenSource#3310`
 {% endhint %}
 
-## Now setup your first template
+## Now setup your first node
 
-After successfully installing the plugin, in order to create your first server, you'll need to setup default (and optionally additional templates). Click the link below to learn more.
+After successfully installing the plugin, in order to create your first server, you'll need to configure nodes (if not running in [Pterodactyl mode - learn more](pterodactyl-configuration.md)). To learn how to configure nodes, click the button below.
