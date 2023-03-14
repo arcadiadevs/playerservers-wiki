@@ -53,4 +53,4 @@
 
 ***
 
-* [🔗 Support Discord](https://invite.gg/arcadiaxyz)
+* [🔗 Support Discord](https://discord.io/arcadiaservices)
