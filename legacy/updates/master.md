@@ -9,7 +9,7 @@ description: >-
 
 ## Description
 
-PlayerServers is an advanced plugin that will allow your players to create their own sub-server with just one command. On that server, they'll be owners and they'll have the whole control under that server. They'll even be able to install plugins on it using an advanced GUI. [**In order to purchase it, please scroll to the bottom of this page.**](../../#purchase-it-now)****
+PlayerServers is an advanced plugin that will allow your players to create their own sub-server with just one command. On that server, they'll be owners and they'll have the whole control under that server. They'll even be able to install plugins on it using an advanced GUI. [**In order to purchase it, please scroll to the bottom of this page.**](../../#purchase-it-now)
 
 ## Features
 

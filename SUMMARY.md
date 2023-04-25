@@ -10,6 +10,7 @@
 * [🌐 Pterodactyl configuration](overview/installation/pterodactyl-configuration.md)
   * [🕊 Download custom wings](overview/pterodactyl-configuration/download-custom-wings.md)
   * [🔓 How to create tokens](overview/pterodactyl-configuration/how-to-create-tokens.md)
+  * [⛲ Setting up plugins mount](overview/pterodactyl-configuration/setting-up-plugins-mount.md)
 * [📜 Current Config files](overview/config.md)
 * [🚫 Limitations](overview/limitations/README.md)
   * [Permission-based RAM](overview/limitations/permission-based-ram.md)
