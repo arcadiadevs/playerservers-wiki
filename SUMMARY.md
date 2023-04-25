@@ -12,6 +12,7 @@
   * [🔓 How to create tokens](overview/pterodactyl-configuration/how-to-create-tokens.md)
   * [⛲ Setting up plugins mount](overview/pterodactyl-configuration/setting-up-plugins-mount.md)
 * [📜 Current Config files](overview/config.md)
+* [📄 Commands & permissions](overview/permissions-and-commands.md)
 * [🚫 Limitations](overview/limitations/README.md)
   * [Permission-based RAM](overview/limitations/permission-based-ram.md)
   * [Permission-based CPU](overview/limitations/permission-based-ram-1.md)
