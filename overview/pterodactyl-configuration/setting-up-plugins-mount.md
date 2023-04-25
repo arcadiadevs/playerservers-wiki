@@ -18,7 +18,8 @@ Unfortunately, Pterodactyl doesn't provide an API for that at the moment (until 
 
 1. Navigate to your Pterodactyl folder, preferably via some kind of SFTP file manager, like [WinSCP](https://winscp.net/eng/download.php) or [CyberDuck](https://cyberduck.io/). The directory is usually `/var/www/pterodactyl`.
 2. Open up `app/Http/Controllers/Api/Application/Servers/ServerManagementController.php` preferably using some sort of text editor, like [VSCode](https://code.visualstudio.com/) or Notepad++.
-   1.  Below all imports, paste `use Pterodactyl\Models\MountServer;` Your imports should look like the following:\
+   1. If you're a more advanced user, just making sure to merge [this differences](https://github.com/arcadiadevs/panel/commit/0550428a2a914fc060811445e90be8b8ffd35098) will be enough. For everyone else, please carefully follow the instructions below.
+   2.  Below all imports, paste `use Pterodactyl\Models\MountServer;` Your imports should look like the following:\
 
 
        {% code title="ServerManagementController.php" overflow="wrap" lineNumbers="true" %}
@@ -38,7 +39,7 @@ Unfortunately, Pterodactyl doesn't provide an API for that at the moment (until 
        {% endcode %}
 
 
-   2.  Below reinstall function, paste the following code block:\
+   3.  Below reinstall function, paste the following code block:\
 
 
        {% code title="ServerManagementController.php" overflow="wrap" %}
@@ -58,7 +59,7 @@ Unfortunately, Pterodactyl doesn't provide an API for that at the moment (until 
        {% endcode %}
 
 
-   3.  The end result will be the following file (which you may as well just copy and replace your whole file contents with, but a more manual approach like in steps 1 and 2 is recommended):\
+   4.  The end result will be the following file (which you may as well just copy and replace your whole file contents with, but a more manual approach like in steps 1 and 2 is recommended):\
 
 
        {% code title="ServerManagementController.php" lineNumbers="true" %}
