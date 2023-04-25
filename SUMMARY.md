@@ -48,8 +48,8 @@
 
 ## 🛍 Buy
 
-* [⛲ Spigot Link](https://www.spigotmc.org/resources/82268)
 * [🏪 BuiltByBit](https://builtbybit.com/resources/15521/)
+* [🚿 SpigotMC](https://www.spigotmc.org/resources/82268)
 
 ***
 

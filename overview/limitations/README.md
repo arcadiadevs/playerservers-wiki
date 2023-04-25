@@ -1,6 +1,10 @@
+---
+description: Learn how to set permission-based limitations for your players.
+---
+
 # 🚫 Limitations
 
-On pages below, you'll learn how to set permission-based limitations for your players.
+Click on a page below to learn how to setup permissions based limitations.
 
 {% content-ref url="permission-based-ram.md" %}
 [permission-based-ram.md](permission-based-ram.md)
