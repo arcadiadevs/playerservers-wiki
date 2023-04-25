@@ -10,6 +10,42 @@ In order to create subservers, you need to have nodes configured. Each node can 
 
 ## Instructions
 
+### Download Docker
+
+For PlayerServers to be created, you need to have Docker installed on each of your nodes.
+
+For a quick install of Docker CE, you can execute the command below:
+
+```bash
+curl -sSL https://get.docker.com/ | CHANNEL=stable bash
+```
+
+<details>
+
+<summary>Alternative approach</summary>
+
+If you have issues with the command above, you may want to try the following one as well (Debian based systems only):
+
+```bash
+sudo apt install docker.io
+```
+
+</details>
+
+If you would rather do a manual installation, please reference the official Docker documentation for how to install Docker CE on your server. Some quick links are listed below for commonly supported systems.
+
+* [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce)
+* [CentOS](https://docs.docker.com/install/linux/docker-ce/centos/#install-docker-ce)
+* [Debian](https://docs.docker.com/install/linux/docker-ce/debian/#install-docker-ce)
+
+**Start Docker on Boot**
+
+If you are on an operating system with systemd (Ubuntu 16+, Debian 8+, CentOS 7+) run the command below to have Docker start when you boot your machine.
+
+```bash
+systemctl enable --now docker
+```
+
 ### Download Daemon
 
 In order to create a node, you'll need to download the latest Daemon.
