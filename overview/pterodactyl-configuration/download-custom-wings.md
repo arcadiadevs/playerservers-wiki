@@ -18,6 +18,8 @@ Download custom wings
 
 After downloading it, navigate to `/usr/local/bin` and remove `wings` from there. Afterwards, upload our custom wings and make sure to name it `wings`. Afterwards, simply restart your wings, usually by running `service wings restart`.
 
+Now, make sure to disable automatic restart of containers so that Wings doesn't restart the server as it shuts down due to inactivity. To do that, navigate to `/etc/pterodactyl/config.yml` and set crash\_detection.enabled to false.
+
 {% hint style="success" %}
 ### Great, you're done!
 
