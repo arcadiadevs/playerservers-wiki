@@ -1,7 +1,7 @@
 # 📜 Current Config files
 
 {% hint style="info" %}
-The below page explains how to use this feature on PlayerServers 3. This is only relevant if you're a beta tester. To view this page for PlayerServers 3, click [here.](../legacy/config.md)
+The below page explains how to use this feature on PlayerServers 3. This is only relevant if you're a beta tester. To view this page for PlayerServers 2, click [here.](../legacy/config.md)
 {% endhint %}
 
 Below you can see the contents of the newest BungeeCord PlayerServers configuration file.
@@ -36,6 +36,10 @@ mysql:
   debug: false
   get-from-file: false
 
+# Should we automatically update the server core to the latest version
+# for all sub-servers upon server restart?
+auto-update-server-core: true
+
 # Where should players be moved after they /stop or /ps kill their server?
 balancer:
   - Hub1
@@ -45,6 +49,47 @@ balancer:
 # will be equal to player username instead of (for example) aa386b6h
 use-usernames: true
 
+
+# Should we use domain name instead of IP address for servers?
+use-subdomain:
+  # Should we enable custom subdomain formatting?
+  enabled: false
+
+  # What is the API key that we should use?
+  # To create an API token, from the Cloudflare dashboard,
+  # go to My Profile > API Tokens and select Create Token.
+  # When creating the token, select the following permissions:
+    # - Zone > DNS > Edit
+  api-key: ""
+
+  # What is the IP address that we should use?
+  # If you want to use auto-detection, set this to "auto"
+  # If you want to use a specific IP address, set this to the IP address
+  network-ip: "auto"
+
+  # What is the zone ID that we should use?
+  zone-id: ""
+
+  # What is the domain name that we should use?
+  domain: "example.com"
+
+  # What is the subdomain format?
+  # %id% equals to player name or uuid depending on use-usernames option
+  # %uuid% is a random UUID (independent of use-usernames option)
+  # %uuid_short% is a random UUID without dashes (independent of use-usernames option)
+  # %player% is the player name (independent of use-usernames option)
+  # %playeruuid% is the player UUID
+  # %playeruuid_short% is the player UUID without dashes
+  # %timestamp% is a timestamp in milliseconds
+  # %timestampshort% is a timestamp in seconds
+  # %day% is a day of the month
+  # %month% is a month of the year
+  # %year% is a year
+  #
+  # To find out what a UUID looks like, you can use this website:
+  # https://www.uuidgenerator.net
+  sub-domain: "%player%"
+
 server-name-format:
   # Should we enable custom server name formatting?
   enabled: false
@@ -52,10 +97,10 @@ server-name-format:
   # Which format should we use?
   # %id% equals to player name or uuid depending on use-usernames option
   # %uuid% is a random UUID (independent of use-usernames option)
-  # %uuidshort% is a random UUID without dashes (independent of use-usernames option)
+  # %uuid_short% is a random UUID without dashes (independent of use-usernames option)
   # %player% is the player name (independent of use-usernames option)
   # %playeruuid% is the player UUID
-  # %playeruuidshort% is the player UUID without dashes
+  # %playeruuid_short% is the player UUID without dashes
   # %timestamp% is a timestamp in milliseconds
   # %timestampshort% is a timestamp in seconds
   # %day% is a day of the month
@@ -97,6 +142,16 @@ cpu-limiting:
 
   # How much CPU (in %) should we allocate to each PlayerServer?
   cpu-per-server: 50
+
+disk-limiting:
+    # Should we use permissions for disk management? If set to true, you MUST give
+    # your players permission playerserver.disk.<amount> (ex: playerserver.disk.256)
+    # or, else, the command will be blocked, and player will not be able to create
+    # the server. If set to false, everyone will have disk-per-server amount of disk.
+    use-permissions: false
+
+    # How much disk (in MB) should we allocate to each PlayerServer?
+    disk-per-server: 1024
 
 player-limiting:
   # Should we use permissions for max-players management? If set to true, your
@@ -213,9 +268,11 @@ pterodactyl:
   # which the servers will be deploy.
   # Location id is the ID of location used for load-balanced deployments.
   # Nodes under the selected location will be slowly filled up with servers.
+  # MountID is the id of your plugins mount. If you don't have one, set it to -1.
   nest-id: 0
   egg-id: 0
   location-id: 0
+  mount-id: -1
 
   # Should we print the docker container installation output to the user?
   # Could be useful for debugging, and nonetheless, it can be cool for the player :)

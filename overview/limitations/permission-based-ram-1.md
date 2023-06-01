@@ -24,7 +24,7 @@ In order to begin, you'll need to change a few config options. Make sure your cp
 cpu-limiting:
   # Only for docker-based servers,
   # should we use permissions for cpu management? If set to true, you MUST give
-  # your players permission playerserver.cpu.<amount> (ex: playerserver.cpu.1)
+  # your players permission playerservers.cpu.<amount> (ex: playerserver.cpu.1)
   # or, else, the command will be blocked, and player will not be able to create
   # the server. If set to false, everyone will have cpu-per-server amount of CPU.
   use-permissions: false
@@ -35,10 +35,10 @@ cpu-limiting:
 
 By enabling use-permissions, the plugin will ignore cpu-per-server option and will use permission-based CPU management system.
 
-The next thing you'll wanna do is to give all the groups that have `playerserver.manage` permission a new permission as following: `playerserver.cpu.<cpu as percentage>`. Here's an example in LuckPerms:
+The next thing you'll wanna do is to give all the groups that have `playerservers.manage` permission a new permission as following: `playerservers.cpu.<cpu as percentage>`. Here's an example in LuckPerms:
 
 ```yaml
-/lp group default permission set playerserver.ram.100
+/lp group default permission set playerservers.ram.100
 ```
 
 In the following example, we gave the role default ability to create a server with 1 CPU core.
