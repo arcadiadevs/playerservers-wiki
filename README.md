@@ -30,3 +30,7 @@ Purchase on BuiltByBit (MC-Market)
 {% embed url="https://www.spigotmc.org/resources/82268/" %}
 Purchase on SpigotMC
 {% endembed %}
+
+{% embed url="https://polymart.org/resource/playerservers.57" %}
+Purchase on Polymart
+{% endembed %}
